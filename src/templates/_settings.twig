@@ -7,6 +7,7 @@
     label: 'Postal Server',
     instructions: 'The URL or IP address of the Postal server to send mail through. Do not include https:// or a trailing slash.',
     id: 'host',
+    suggestEnvVars: true,
     name: 'host',
     value: adapter.host,
     errors: adapter.getErrors('host')
@@ -16,6 +17,7 @@
     label: 'API Key',
     instructions: 'The API key to use when communicating with the Postal server.',
     id: 'api-key',
+    suggestEnvVars: true,
     name: 'apiKey',
     value: adapter.apiKey,
     errors: adapter.getErrors('apiKey')
@@ -25,6 +27,7 @@
     label: 'Send Using RAW Messages',
     instructions: 'If enabled, the plugin will send messages using the RAW API endpoint. This is useful if you are using a custom template or need to send attachments.',
     id: 'raw',
+    suggestEnvVars: true,
     name: 'useRawMessage',
     value: 1,
     checked: adapter.useRawMessage == 1,

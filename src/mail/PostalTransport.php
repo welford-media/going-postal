@@ -98,10 +98,6 @@ class PostalTransport extends AbstractApiTransport
             $payload['reply_to'] = $emails[0];
         }
 
-        if ($email->getAttachments()) {
-            $payload['attachments'] = $email->getAttachments();
-        }
-
         return $payload;
     }
 
