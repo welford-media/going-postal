@@ -81,9 +81,7 @@ class PostalRawTransport extends AbstractApiTransport
 
         $headers = $email->getHeaders();
         $headers->addHeader('Sender', $envelope->getSender()->getAddress());
-        $headers->remove('From');
         $email->setHeaders($headers);
-        $email->addFrom($envelope->getSender()->getAddress());
 
         $payload = [
             'mail_from' => $envelope->getSender()->getAddress(),
