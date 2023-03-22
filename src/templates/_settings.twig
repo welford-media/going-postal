@@ -3,7 +3,7 @@
 
 {% import '_includes/forms.twig' as forms %}
 
-{{ forms.textField({
+{{ forms.autosuggestField({
     label: 'Postal Server',
     instructions: 'The URL or IP address of the Postal server to send mail through. Do not include https:// or a trailing slash.',
     id: 'host',
@@ -13,7 +13,7 @@
     errors: adapter.getErrors('host')
 }) }}
 
-{{ forms.textField({
+{{ forms.autosuggestField({
     label: 'API Key',
     instructions: 'The API key to use when communicating with the Postal server.',
     id: 'api-key',
@@ -23,13 +23,12 @@
     errors: adapter.getErrors('apiKey')
 }) }}
 
-{{ forms.checkBox({
+{{ forms.autosuggestField({
     label: 'Send Using RAW Messages',
-    instructions: 'If enabled, the plugin will send messages using the RAW API endpoint. This is useful if you are using a custom template or need to send attachments.',
+    instructions: 'If enabled, the plugin will send messages using the RAW API endpoint. This is useful if you are using a custom template or need to send attachments. Accepted values: 1 or 0.',
     id: 'raw',
     suggestEnvVars: true,
     name: 'useRawMessage',
-    value: 1,
-    checked: adapter.useRawMessage == 1,
+    value: adapter.useRawMessage,
     errors: adapter.getErrors('useRawMessage')
 }) }}
