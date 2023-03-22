@@ -49,7 +49,7 @@ class PostalAdapter extends BaseTransportAdapter
         $apiKey = App::parseEnv($this->apiKey);
         $host = App::parseEnv($this->host);
         $client = HttpClient::create();
-        if ($this->useRawMessage) {
+        if (App::parseEnv($this->useRawMessage)) {
             return new PostalRawTransport($host, $apiKey, $client);
         }
         return new PostalTransport($host, $apiKey, $client);
