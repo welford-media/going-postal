@@ -1,0 +1,22 @@
+{# @var plugin \WelfordMedia\GoingPostal\GoingPostal #}
+{# @var settings \WelfordMedia\GoingPostal\models\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.textField({
+    label: 'Postal Server',
+    instructions: 'The URL or IP address of the Postal server to send mail through. Do not include https:// or a trailing slash.',
+    id: 'host',
+    name: 'host',
+    value: adapter.host,
+    errors: adapter.getErrors('host')
+}) }}
+
+{{ forms.textField({
+    label: 'API Key',
+    instructions: 'The API key to use when communicating with the Postal server.',
+    id: 'api-key',
+    name: 'apiKey',
+    value: adapter.apiKey,
+    errors: adapter.getErrors('apiKey')
+}) }}
