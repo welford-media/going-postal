@@ -20,6 +20,8 @@ class PostalAdapter extends BaseTransportAdapter
 
     public string $host = '';
 
+    public bool $useRawMessage = false;
+
     /**
      * @return array<string, string>
      */
@@ -28,6 +30,7 @@ class PostalAdapter extends BaseTransportAdapter
         return [
             'apiKey' => 'API Key',
             'host' => 'Postal Server Hostname or IP Address',
+            'useRawMessage' => 'Send using RFC 2822 formatted messages',
         ];
     }
 
@@ -46,6 +49,9 @@ class PostalAdapter extends BaseTransportAdapter
         $apiKey = App::parseEnv($this->apiKey);
         $host = App::parseEnv($this->host);
         $client = HttpClient::create();
+        if ($this->useRawMessage) {
+            return new PostalRawTransport($host, $apiKey, $client);
+        }
         return new PostalTransport($host, $apiKey, $client);
     }
 
@@ -57,7 +63,7 @@ class PostalAdapter extends BaseTransportAdapter
         return [
             'parser' => [
                 'class' => EnvAttributeParserBehavior::class,
-                'attributes' => ['apiKey', 'host'],
+                'attributes' => ['apiKey', 'host', 'useRawMessage'],
             ],
         ];
     }
