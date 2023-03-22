@@ -20,3 +20,13 @@
     value: adapter.apiKey,
     errors: adapter.getErrors('apiKey')
 }) }}
+
+{{ forms.checkBox({
+    label: 'Send Using RAW Messages',
+    instructions: 'If enabled, the plugin will send messages using the RAW API endpoint. This is useful if you are using a custom template or need to send attachments.',
+    id: 'raw',
+    name: 'useRawMessage',
+    value: 1,
+    checked: adapter.useRawMessage == 1,
+    errors: adapter.getErrors('useRawMessage')
+}) }}

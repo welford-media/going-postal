@@ -1,8 +1,8 @@
 # Going Postal
 
-This Craft CMS 4 plugin provides a mail adpater to enable the use of a Postal Servers HTTP API.
+This Craft CMS 4 plugin provides a mail adapter to enable the use of a Postal servers HTTP API.
 
-***Please note, email attachments are not supported at the moment.***
+***Please note, email attachments are only supported when the RAW setting is enabled.***
 
 ## Requirements
 
