@@ -20,7 +20,7 @@ class PostalAdapter extends BaseTransportAdapter
 
     public string $host = '';
 
-    public bool $useRawMessage = false;
+    public int $useRawMessage;
 
     /**
      * @return array<string, string>
@@ -29,8 +29,8 @@ class PostalAdapter extends BaseTransportAdapter
     {
         return [
             'apiKey' => 'API Key',
-            'host' => 'Postal Server Hostname or IP Address',
-            'useRawMessage' => 'Send using RFC 2822 formatted messages',
+            'host' => 'Postal Server',
+            'useRawMessage' => 'Send using RAW messages',
         ];
     }
 
@@ -73,8 +73,9 @@ class PostalAdapter extends BaseTransportAdapter
      */
     protected function defineRules(): array
     {
-        return [
-            [['apiKey', 'host'], 'required'],
-        ];
+        $rules = parent::defineRules();
+        $rules[] = [['apiKey', 'host'], 'required'];
+        $rules[] = [['useRawMessage'], 'integer', 'min' => 0, 'max' => 1];
+        return $rules;
     }
 }
