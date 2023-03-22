@@ -1,5 +1,8 @@
 # Release Notes for Going Postal
 
+## 1.0.4
+- Removed from header stripping from the raw transport
+
 ## 1.0.3
 - Added fields for environment variables to settings
 
